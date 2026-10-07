@@ -4,7 +4,7 @@ import {
 } from 'rxjs';
 
 import {
-  createMachine,
+  createStateMachine,
   type Reducer,
 } from '../src/index.js';
 
@@ -60,7 +60,7 @@ const resetReducer$ =
   );
 
 const state$ =
-  createMachine(
+  createStateMachine(
     initialState,
     incrementReducer$,
     decrementReducer$,
