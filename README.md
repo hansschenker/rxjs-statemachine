@@ -3,7 +3,7 @@
 A tiny generic RxJS 7 state machine built around one invariant dataflow:
 
 ```text
-Action -> Reducer<S> -> createMachine<S> -> State<S>
+Action -> Reducer<S> -> createStateMachine<S> -> State<S>
 ```
 
 Internally:
@@ -25,7 +25,7 @@ export type Reducer<S> = (state: S) => S;
 Domain actions are mapped to reducer values. Those reducer streams are fed into one generic machine:
 
 ```ts
-const state$ = createMachine(
+const state$ = createStateMachine(
   initialState,
   addTodoReducer$,
   toggleTodoReducer$,
@@ -49,7 +49,7 @@ action B$ -> reducer$ ----+----+
 action C$ -> reducer$ ----+    |
                                 v
                      +--------------------+
-                     |   createMachine    |
+                     |   createStateMachine    |
                      |                    |
                      | merge              |
                      |   |                |
@@ -92,10 +92,10 @@ shareState<T>(): MonoTypeOperatorFunction<T>
 
 Shares one upstream execution and remembers the latest emitted state with a `ReplaySubject(1)`.
 
-### `createMachine<S>()`
+### `createStateMachine<S>()`
 
 ```ts
-createMachine<S>(
+createStateMachine<S>(
   initialState: S,
   ...reducerStreams: Observable<Reducer<S>>[]
 ): Observable<S>
@@ -156,7 +156,7 @@ The reducers plug into the generic machine:
 
 ```ts
 const state$ =
-  createMachine(
+  createStateMachine(
     initialTodoState,
     addTodoReducer$,
     toggleTodoReducer$,
@@ -170,13 +170,13 @@ The view subscribes to state:
 state$.subscribe(renderTodoState);
 ```
 
-Nothing inside `createMachine` changes when the domain changes.
+Nothing inside `createStateMachine` changes when the domain changes.
 
 ## Counter example
 
 ```ts
 const state$ =
-  createMachine(
+  createStateMachine(
     initialCounterState,
     incrementReducer$,
     decrementReducer$,
@@ -194,7 +194,7 @@ The design keeps four concerns separate:
 | --- | --- |
 | Action | Something happened |
 | Reducer | Describe how state changes |
-| `createMachine` | Apply state changes over time |
+| `createStateMachine` | Apply state changes over time |
 | Subscriber/View | Consume and render state |
 
 RxJS moves values over time. In this architecture, reducer functions are also values:
