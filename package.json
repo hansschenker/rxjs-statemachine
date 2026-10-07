@@ -1,7 +1,7 @@
 {
   "name": "rxjs-machine",
   "version": "0.1.0",
-  "description": "A tiny generic RxJS 7 state machine: merge -> scan -> shareState.",
+  "description": "A tiny generic RxJS 7 state machine driven by dynamic Reducer<S> streams: merge -> scan -> shareState.",
   "type": "module",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "npm run build && node --test dist/test/createMachine.test.js dist/test/shareState.test.js"
+    "test": "npm run build && node --test dist/test/createStateMachine.test.js dist/test/shareState.test.js"
   },
   "peerDependencies": {
     "rxjs": "^7.8.0"
