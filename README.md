@@ -1,4 +1,4 @@
-# rxjs-machine
+# rxjs-statemachine
 
 A tiny generic RxJS 7 state machine built around one invariant dataflow:
 
@@ -12,7 +12,7 @@ Internally:
 merge -> scan -> shareState
 ```
 
-The domain can change. The RxJS machine stays the same.
+The domain can change. The RxJS state machine stays the same.
 
 ## Core idea
 
