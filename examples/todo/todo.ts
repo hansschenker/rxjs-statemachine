@@ -6,7 +6,7 @@ import {
 } from 'rxjs';
 
 import {
-  createMachine,
+  createStateMachine,
   type Reducer,
 } from '../../src/index.js';
 
@@ -211,7 +211,7 @@ const removeReducer$ =
   );
 
 const state$ =
-  createMachine(
+  createStateMachine(
     initialState,
     addReducer$,
     toggleReducer$,
