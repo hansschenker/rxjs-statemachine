@@ -1,5 +1,5 @@
 {
-  "name": "rxjs-machine",
+  "name": "rxjs-statemachine",
   "version": "0.1.0",
   "description": "A tiny generic RxJS 7 state machine driven by dynamic Reducer<S> streams: merge -> scan -> shareState.",
   "type": "module",
